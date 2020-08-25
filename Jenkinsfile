@@ -26,7 +26,7 @@ pipeline {
             sh "cd ${env.SERVICE}/ && sh increment_version.sh"
             sh "cd ${env.SERVICE}/ && git add version"
             sh "cd ${env.SERVICE}/ && git commit -am 'Bumped up version'"
-            sh "cd ${env.SERVICE}/ && git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${env.GITHUB_ORGANIZATION}/${env.SERVICE}"
+            sh "cd ${env.SERVICE}/ && git push ${env.GIT_PROTOCOL}://${GIT_USERNAME}:${GIT_PASSWORD}@${env.GIT_ENDPOINT}/${env.GITHUB_ORGANIZATION}/${env.SERVICE}"
           } 
         }
       }
